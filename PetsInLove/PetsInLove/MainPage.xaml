@@ -2,10 +2,47 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:PetsInLove"
-             x:Class="PetsInLove.MainPage">
+             x:Class="PetsInLove.MainPage"
+             Title="teste">
 
-	<Label Text="Welcome to Xamarin Forms!" 
-           VerticalOptions="Center" 
-           HorizontalOptions="Center" />
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="About" Command="{Binding AboutCommand}"/>
+        <ToolbarItem Text="Buscar" Command="{Binding SearchCommand}"/>
+    </ContentPage.ToolbarItems>
+    <ListView 
+        HasUnevenRows="True"
+        ItemsSource="{Binding Pets}" 
+        ItemSelected="ListView_OnItemSelected"
+        RefreshCommand="{Binding RefreshCommand}"
+        IsPullToRefreshEnabled="True"
+        >
+        <ListView.ItemTemplate>
+            <DataTemplate>
+                <ViewCell>
+                    <StackLayout Padding="20, 30" Orientation="Vertical">
 
+                        <Image x:Name="photo"
+                           BackgroundColor="Blue"
+                           HeightRequest="260"
+                           Margin="10,5,10,0"
+                           Source="{Binding Photo}"
+                           />
+
+                        <Label Text="{Binding Name}"
+							   FontSize="Large"                   
+                               TextColor="#FF5525"/>
+
+                        <Label Text="{Binding Breed}"
+							    FontSize="Small" />
+
+                        <Label Text="{Binding Genre}"
+							    FontSize="Small" />
+
+                        <Label Text="{Binding Detail}"
+							    FontSize="Small" />
+                    </StackLayout>
+                </ViewCell>
+            </DataTemplate>
+        </ListView.ItemTemplate>
+    </ListView>
 </ContentPage>
