@@ -49,9 +49,9 @@ namespace PetsInLove.ViewModels
             throw new NotImplementedException();
         }
 
-        private void ExecuteSearchCommand(object obj)
+        private async void ExecuteSearchCommand(object obj)
         {
-            throw new NotImplementedException();
+            await PushModalAsync<SearchViewModel>();
         }
 
         public void LoadPets(FilterPetDto filterPetDto)

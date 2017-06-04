@@ -9,6 +9,7 @@
         <ToolbarItem Text="About" Command="{Binding AboutCommand}"/>
         <ToolbarItem Text="Buscar" Command="{Binding SearchCommand}"/>
     </ContentPage.ToolbarItems>
+    <!--Lista -->
     <ListView 
         HasUnevenRows="True"
         ItemsSource="{Binding Pets}" 
