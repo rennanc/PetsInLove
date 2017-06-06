@@ -82,6 +82,11 @@ namespace PetsInLove.Services
             return Items.ToList();
         }
 
+        public Task<List<Pet>> GetContentsByFilterAsync(FilterPetDto filterPetDto)
+        {
+            throw new NotImplementedException();
+        }
+
         //public async Task SyncAsync()
         //{
         //    ReadOnlyCollection<MobileServiceTableOperationError> syncErrors = null;

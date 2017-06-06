@@ -1,4 +1,5 @@
 ﻿using PetsInLove.Models;
+using PetsInLove.Models.Enums;
 using PetsInLove.Services;
 using PetsInLove.ViewModels.Dto;
 using System;
@@ -25,6 +26,14 @@ namespace PetsInLove.ViewModels
 
         public Command RefreshCommand { get; }
 
+        public Command OpenFilter { get; }
+
+        public Entry txtBreed { get; set; }
+
+        public Picker pickerSpecies { get; set; }
+
+        public Picker pickerGenre { get; set; }
+
         public MainViewModel(IPetsInLoveApiService petsInLoveApiService)
         {
             _petsInLoveApiService = petsInLoveApiService;
@@ -33,11 +42,6 @@ namespace PetsInLove.ViewModels
             RefreshCommand = new Command(() => LoadPets(null)); // Sempre atualizar
             AboutCommand = new Command(ExecuteAboutCommand);
             SearchCommand = new Command(ExecuteSearchCommand);
-
-            FilterPetDto filtroPetDto = new FilterPetDto();
-            Pet pet = new Pet();
-            pet.Name = "teste";
-            Pets.Add(pet);
 
             LoadPets(null);
 
@@ -51,7 +55,7 @@ namespace PetsInLove.ViewModels
 
         private async void ExecuteSearchCommand(object obj)
         {
-            await PushModalAsync<SearchViewModel>();
+           await PushModalAsync<SearchViewModel>();
         }
 
         public void LoadPets(FilterPetDto filterPetDto)

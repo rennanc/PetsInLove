@@ -20,6 +20,8 @@ namespace PetsInLove.ViewModels
             set { SetProperty(ref _title, value); }
         }
 
+        public Page page { get; set; }
+
         public event PropertyChangedEventHandler PropertyChanged;
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -47,7 +49,7 @@ namespace PetsInLove.ViewModels
             var viewTypeName = $"PetsInLove.{viewModelTypeName.Substring(0, viewModelTypeName.Length - viewModelWordLength)}Page";
             var viewType = Type.GetType(viewTypeName);
 
-            var page = Activator.CreateInstance(viewType) as Page;
+            page = Activator.CreateInstance(viewType) as Page;
 
             if (viewModelType.GetTypeInfo().DeclaredConstructors.Any(c => c.GetParameters().Any(p => p.ParameterType == typeof(IPetsInLoveApiService))))
             {
@@ -74,7 +76,7 @@ namespace PetsInLove.ViewModels
             var viewTypeName = $"PetsInLove.{viewModelTypeName.Substring(0, viewModelTypeName.Length - viewModelWordLength)}Page";
             var viewType = Type.GetType(viewTypeName);
 
-            var page = Activator.CreateInstance(viewType) as Page;
+            page = Activator.CreateInstance(viewType) as Page;
 
             if (viewModelType.GetTypeInfo().DeclaredConstructors.Any(c => c.GetParameters().Any(p => p.ParameterType == typeof(IPetsInLoveApiService))))
             {
@@ -91,6 +93,33 @@ namespace PetsInLove.ViewModels
             }
 
             await Application.Current.MainPage.Navigation.PushModalAsync(page);
+        }
+
+        public async Task PopModalAsync<TViewModel>(params object[] args) where TViewModel : BaseViewModel
+        {
+            var viewModelType = typeof(TViewModel);
+            var viewModelTypeName = viewModelType.Name;
+            var viewModelWordLength = "ViewModel".Length;
+            var viewTypeName = $"PetsInLove.{viewModelTypeName.Substring(0, viewModelTypeName.Length - viewModelWordLength)}Page";
+            var viewType = Type.GetType(viewTypeName);
+
+            var page = Activator.CreateInstance(viewType) as Page;
+
+            if (viewModelType.GetTypeInfo().DeclaredConstructors.Any(c => c.GetParameters().Any(p => p.ParameterType == typeof(IPetsInLoveApiService))))
+            {
+                var argsList = args.ToList();
+                var petsInloveApiService = DependencyService.Get<IPetsInLoveApiService>();
+                argsList.Insert(0, petsInloveApiService);
+                args = argsList.ToArray();
+            }
+
+            var viewModel = Activator.CreateInstance(viewModelType, args);
+            if (page != null)
+            {
+                page.BindingContext = viewModel;
+            }
+
+            await Application.Current.MainPage.Navigation.PopModalAsync(true);
         }
 
         public virtual Task LoadAsync()

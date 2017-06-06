@@ -12,5 +12,6 @@ namespace PetsInLove.Services
         Task InsertItemAsync(Pet pet);
         Task<IEnumerable<Pet>> GetPets(FilterPetDto filterPetDto);
         Task<List<Pet>> GetTagsAsync();
+        Task<List<Pet>> GetContentsByFilterAsync(FilterPetDto filterPetDto);
     }
 }

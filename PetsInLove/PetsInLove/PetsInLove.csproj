@@ -49,6 +49,7 @@
     <Compile Include="Models\Enums\Species.cs" />
     <Compile Include="Models\Pet.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\IAuthenticate.cs" />
     <Compile Include="Service\IPetsInLoveApiService.cs" />
     <Compile Include="Service\PetsInLoveApiService.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />

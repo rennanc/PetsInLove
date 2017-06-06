@@ -1,22 +1,46 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<TabbedPage xmlns="http://xamarin.com/schemas/2014/forms"
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PetsInLove.SearchPage"
              xmlns:pages="clr-namespace:PetsInLove;assembly=PetsInLove"
              Title="TabbedPage">
   <!--Pages can be added as references or inline-->
-    <ContentPage Title="Tab 2">
+    <StackLayout>
         <TableView Intent="Form">
             <TableRoot>
-                <TableSection Title="Raça">
+                <TableSection Title="Filtro">
+                    <EntryCell Label="Raça"></EntryCell>
                     <ViewCell>
-                        <StackLayout Orientation="Horizontal">
-                            <Label Text="teste label" />
-                            <Entry  Text="teste"></Entry>
-                        </StackLayout>
+                        <Picker Title="Selecione o Sexo">
+                            <Picker.Items>
+                                <x:String>Baboon</x:String>
+                                <x:String>Capuchin Monkey</x:String>
+                                <x:String>Blue Monkey</x:String>
+                                <x:String>Squirrel Monkey</x:String>
+                                <x:String>Golden Lion Tamarin</x:String>
+                                <x:String>Howler Monkey</x:String>
+                                <x:String>Japanese Macaque</x:String>
+                            </Picker.Items>
+                        </Picker>
+                    </ViewCell>
+                    <ViewCell>
+                        <Picker Title="Selecione a Espécie">
+                            <Picker.Items>
+                                <x:String>Baboon</x:String>
+                                <x:String>Capuchin Monkey</x:String>
+                                <x:String>Blue Monkey</x:String>
+                                <x:String>Squirrel Monkey</x:String>
+                                <x:String>Golden Lion Tamarin</x:String>
+                                <x:String>Howler Monkey</x:String>
+                                <x:String>Japanese Macaque</x:String>
+                            </Picker.Items>
+                        </Picker>
                     </ViewCell>
                 </TableSection>
             </TableRoot>
         </TableView>
-    </ContentPage>
-</TabbedPage>
+        <StackLayout>
+            <Button Text="Pesquisar" Command="{Binding Search}"></Button>
+        </StackLayout>
+    </StackLayout>
+</ContentPage>
