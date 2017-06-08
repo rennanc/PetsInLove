@@ -12,7 +12,7 @@ using Xamarin.Forms;
 
 namespace PetsInLove.ViewModels
 {
-    class MainViewModel : BaseViewModel
+    public class MainViewModel : BaseViewModel
     {
         private readonly IPetsInLoveApiService _petsInLoveApiService;
 

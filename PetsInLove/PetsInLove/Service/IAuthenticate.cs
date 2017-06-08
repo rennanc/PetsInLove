@@ -9,7 +9,7 @@ namespace PetsInLove.Service
 {
     public interface IAuthenticate
     {
-        Task<MobileServiceUser> Authenticate(MobileServiceClient client,
-            MobileServiceAuthenticationProvider provider);
+        Task<MobileServiceUser> LoginAsync(MobileServiceClient client,
+            MobileServiceAuthenticationProvider provider, IDictionary<string, string> parameters = null);
     }
 }

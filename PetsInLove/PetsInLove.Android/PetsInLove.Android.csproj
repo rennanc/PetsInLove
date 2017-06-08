@@ -51,6 +51,9 @@
     <Reference Include="FormsViewGroup, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Forms.2.3.4.224\lib\MonoAndroid10\FormsViewGroup.dll</HintPath>
     </Reference>
+    <Reference Include="GCM.Client">
+      <HintPath>..\..\Components\GCMClient-1.0\lib\android\GCM.Client.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.WindowsAzure.Mobile, Version=3.1.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Microsoft.Azure.Mobile.Client.3.1.0\lib\monoandroid\Microsoft.WindowsAzure.Mobile.dll</HintPath>
     </Reference>
@@ -61,6 +64,12 @@
     <Reference Include="mscorlib" />
     <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Newtonsoft.Json.6.0.4\lib\portable-net45+wp80+win8+wpa81\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Settings, Version=2.5.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugins.Settings.2.5.8\lib\MonoAndroid10\Plugin.Settings.dll</HintPath>
+    </Reference>
+    <Reference Include="Plugin.Settings.Abstractions, Version=2.5.8.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xam.Plugins.Settings.2.5.8\lib\MonoAndroid10\Plugin.Settings.Abstractions.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -112,10 +121,12 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AuthenticateDroid.cs" />
+    <Compile Include="Helpers\Settings.cs" />
     <Compile Include="MainActivity.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\GcmService.cs" />
+    <Compile Include="Service\SocialAuthentication.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />
