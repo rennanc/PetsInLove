@@ -46,34 +46,39 @@
             ItemsSource="{Binding Pets}" 
             ItemSelected="ListView_OnItemSelected"
             RefreshCommand="{Binding RefreshCommand}"
-            IsPullToRefreshEnabled="True"
+            IsPullToRefreshEnabled="True" Margin="0,30,0,0"
             >   
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Padding="20, 30" Orientation="Vertical">
+                        <Grid RowSpacing="5" ColumnSpacing="0" Margin="10,5" >
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="*"/>
+                                <RowDefinition Height="AUTO"/>
+                            </Grid.RowDefinitions>
+                            <Image Source="{Binding Photo}" Aspect="AspectFill" Grid.RowSpan="2" />
+                            <Image Source="ShadowOverlay" Grid.RowSpan="2"  Aspect="Fill" VerticalOptions="End" HorizontalOptions="Fill" />
 
-                                <Image x:Name="photo"
-                           BackgroundColor="Blue"
-                           HeightRequest="260"
-                           Margin="10,5,10,0"
-                           Source="{Binding Photo}"
-                           />
+                            <Grid Margin="10" RowSpacing="10" ColumnSpacing="10" Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="AUTO"/>
+                                    <RowDefinition Height="25"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="25"/>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="AUTO"/>
+                                </Grid.ColumnDefinitions>
 
-                                <Label Text="{Binding Name}"
-							   FontSize="Large"                   
-                               TextColor="#FF5525"/>
+                                <Label Text="{Binding Name}" FontSize="20" TextColor="#000000" FontAttributes="Bold" BackgroundColor="#ffffff" Opacity="0.7"  Grid.Row="0" Grid.ColumnSpan="3"  LineBreakMode="NoWrap"/>
+                                <StackLayout  Grid.Row="1" Grid.Column="0" BackgroundColor="#ffffff" Opacity="0.7" Grid.ColumnSpan="3" >
+                                    <Label Text="{Binding Breed}" TextColor="#000000"   />
+                                </StackLayout>
 
-                                <Label Text="{Binding Breed}"
-							    FontSize="Small" />
+                            </Grid>
 
-                                <Label Text="{Binding Genre}"
-							    FontSize="Small" />
-
-                                <Label Text="{Binding Detail}"
-							    FontSize="Small" />
-                            </StackLayout>
-                        </ViewCell>
+                        </Grid>
+                    </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>
             </ListView>

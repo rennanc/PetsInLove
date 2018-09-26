@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PetsInLove.Service;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -9,6 +10,8 @@ namespace PetsInLove
 {
     public partial class App : Application
     {
+        public static IAuthenticate Authenticator { get; private set; }
+
         public App()
         {
             InitializeComponent();

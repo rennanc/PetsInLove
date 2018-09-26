@@ -20,12 +20,12 @@ namespace PetsInLove.Droid.Service
 {
     public class SocialAuthentication : IAuthenticate
     {
+
         public async Task<MobileServiceUser> LoginAsync(MobileServiceClient client, MobileServiceAuthenticationProvider provider, IDictionary<string, string> parameters = null)
         {
             try
             {
-                var user = await client.LoginAsync(Forms.Context, provider);
-
+                var user = await client.LoginAsync(Forms.Context, provider, "petsinlove");
                 Settings.AuthToken = user?.MobileServiceAuthenticationToken ?? string.Empty;
                 Settings.UserId = user?.UserId;
 

@@ -8,6 +8,7 @@ using Android.Widget;
 using Android.OS;
 using Gcm.Client;
 using PetsInLove.Droid.Service;
+using PetsInLove.Service;
 
 namespace PetsInLove.Droid
 {
@@ -47,24 +48,24 @@ namespace PetsInLove.Droid
 
             LoadApplication(new App());
 
-            try
-            {
-                // Check to ensure everything's set up right
-                GcmClient.CheckDevice(this);
-                GcmClient.CheckManifest(this);
+            /* try
+             {
+                 // Check to ensure everything's set up right
+                 GcmClient.CheckDevice(this);
+                 GcmClient.CheckManifest(this);
 
-                // Register for push notifications
-                System.Diagnostics.Debug.WriteLine("Registering...");
-                GcmClient.Register(this, PushHandlerBroadcastReceiver.SENDER_IDS);
-            }
-            catch (Java.Net.MalformedURLException)
-            {
-                CreateAndShowDialog("There was an error creating the client. Verify the URL.", "Error");
-            }
-            catch (Exception e)
-            {
-                CreateAndShowDialog(e.Message, "Error");
-            }
+                 // Register for push notifications
+                 System.Diagnostics.Debug.WriteLine("Registering...");
+                 GcmClient.Register(this, PushHandlerBroadcastReceiver.SENDER_IDS);
+             }
+             catch (Java.Net.MalformedURLException)
+             {
+                 CreateAndShowDialog("There was an error creating the client. Verify the URL.", "Error");
+             }
+             catch (Exception e)
+             {
+                 CreateAndShowDialog(e.Message, "Error");
+             }*/
 
         }
 

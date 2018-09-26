@@ -22,7 +22,7 @@ namespace PetsInLove.ViewModels
 
         public Command SearchCommand { get; }
 
-        public Command<Pet> ShowCategoriaCommand { get; }
+        public Command<Pet> PetDetailsCommand { get; }
 
         public Command RefreshCommand { get; }
 
@@ -42,6 +42,7 @@ namespace PetsInLove.ViewModels
             RefreshCommand = new Command(() => LoadPets(null)); // Sempre atualizar
             AboutCommand = new Command(ExecuteAboutCommand);
             SearchCommand = new Command(ExecuteSearchCommand);
+            PetDetailsCommand = new Command<Pet>(ExecutePetDetailsCommand);
 
             LoadPets(null);
 
@@ -90,9 +91,9 @@ namespace PetsInLove.ViewModels
             OnPropertyChanged(nameof(Pets));
         }
 
-        //private async void ExecuteShowCategoriaCommand(Pet pet)
-        //{
-        //    await PushAsync<CategoriaViewModel>(pet);
-        //}
+        private async void ExecutePetDetailsCommand(Pet pet)
+        {
+            await PushAsync<PetDetailsViewModel>(pet);
+        }
     }
 }

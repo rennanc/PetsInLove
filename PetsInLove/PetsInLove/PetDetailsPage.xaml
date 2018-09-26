@@ -1,0 +1,58 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="PetsInLove.PetDetailsPage"
+             xmlns:pages="clr-namespace:PetsInLove;assembly=PetsInLove"
+             >
+    <ContentPage.Content>
+      <ScrollView>
+            <StackLayout Margin="10,5,10,0">
+
+                <StackLayout>
+                    <StackLayout>
+                        <Image x:Name="photo"
+                       HeightRequest="260"
+                       Source="{Binding Pet.Photo}"/>
+                    </StackLayout>
+                    <StackLayout Margin="10,-10,0,0">
+                        <Label Text="{Binding Pet.Name}"
+                               FontAttributes="Bold"
+                      FontSize="Large" XAlign="Center"
+                      TextColor="#3b5998"/>
+                    </StackLayout>
+                </StackLayout>
+                <FlexLayout Direction="Row">
+                    <Button Command="{Binding EmailCommand}" Text="Enviar Email" BackgroundColor="#3b5998" FontSize="Medium" TextColor="White" BorderRadius="20" FlexLayout.Grow="1" />
+                    <Button Command="{Binding CallCommand}" Text="Ligar" BackgroundColor="#3b5998" FontSize="Medium" TextColor="White" BorderRadius="20" FlexLayout.Grow="1" />
+                </FlexLayout>
+                
+                <Label Text="{Binding Pet.Detail}" FontSize="Large"  />
+
+                <Label Text="Contato:" FontSize="Large" />
+                <Label Text="{Binding Pet.OwnerName}" FontSize="Medium" />
+                <Label Text="{Binding Pet.Email}" FontSize="Medium"/>
+                <Label Text="{Binding Pet.Phone}" FontSize="Medium"/>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Endereço:"  FontSize="Medium" />
+                    <Label Text="{Binding Pet.City}" FontSize="Medium" />
+                    <Label Text="{Binding Pet.Country}" FontSize="Medium"/>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <StackLayout>
+                        <Label Text="Raça" FontSize="Medium" />
+                    </StackLayout>
+                    <StackLayout>
+                        <Label Text="{Binding Pet.Breed}"  FontSize="Medium"/>
+                    </StackLayout>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Label Text="Sexo" FontSize="Medium"/>
+                    <Label Text="{Binding Pet.Genre}" FontSize="Medium"/>
+                </StackLayout>
+            </StackLayout>
+        </ScrollView>
+    </ContentPage.Content>
+</ContentPage>

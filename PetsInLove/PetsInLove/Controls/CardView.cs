@@ -14,14 +14,14 @@ namespace PetsInLove.Controls
             if (Device.RuntimePlatform.Equals("iOS"))
             {
                 HasShadow = false;
-                OutlineColor = Color.Transparent;
+                BorderColor = Color.Transparent;
                 BackgroundColor = Color.Transparent;
             }
 
             if (Device.RuntimePlatform.Equals("Android"))
             {
                 HasShadow = true;
-                OutlineColor = Color.Transparent;
+                BorderColor = Color.Transparent;
                 BackgroundColor = Color.Transparent;
             }
         }

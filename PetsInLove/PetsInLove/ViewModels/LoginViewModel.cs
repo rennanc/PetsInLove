@@ -25,7 +25,6 @@ namespace PetsInLove.ViewModels
         {
             azureService = DependencyService.Get<AzureService>();
             navigation = nav;
-
             Title = "Pets In Love - Login";
         }
 

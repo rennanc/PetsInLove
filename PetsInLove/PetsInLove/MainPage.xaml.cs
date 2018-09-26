@@ -28,7 +28,7 @@ namespace PetsInLove
         {
             if (e.SelectedItem != null)
             {
-                ViewModel.ShowCategoriaCommand.Execute(e.SelectedItem);
+                ViewModel.PetDetailsCommand.Execute(e.SelectedItem);
             }
         }
 

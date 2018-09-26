@@ -15,7 +15,9 @@ namespace PetsInLove.Service
 {
     public class AzureService
     {
-        static readonly string AppUrl = "http://petsinlove.azurewebsites.net";
+        static readonly string AppUrl = "https://petsinlove.azurewebsites.net";
+
+        private const string uriScheme = "petsinlove://easyauth.callback";
 
         public MobileServiceClient Client { get; set; }
 
@@ -23,7 +25,13 @@ namespace PetsInLove.Service
 
         public void Initialize()
         {
-            Client = new MobileServiceClient(AppUrl);
+            try
+            {
+                Client = new MobileServiceClient(AppUrl);
+            }catch(Exception e)
+            {
+                String a = e.Message;
+            }
 
             if(!string.IsNullOrWhiteSpace(Settings.AuthToken) && !string.IsNullOrWhiteSpace(Settings.UserId))
             {
@@ -39,7 +47,9 @@ namespace PetsInLove.Service
             Initialize();
 
             var auth = DependencyService.Get<IAuthenticate>();
-            var user = await auth.LoginAsync(Client, MobileServiceAuthenticationProvider.Facebook);
+            IDictionary<string, string> parameters = new Dictionary<string, string>();
+            parameters.Add( "uriScheme", uriScheme );
+            var user = await auth.LoginAsync(Client, MobileServiceAuthenticationProvider.Google, parameters);
 
             if(user == null)
             {

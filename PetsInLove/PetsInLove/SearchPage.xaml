@@ -13,13 +13,8 @@
                     <ViewCell>
                         <Picker Title="Selecione o Sexo">
                             <Picker.Items>
-                                <x:String>Baboon</x:String>
-                                <x:String>Capuchin Monkey</x:String>
-                                <x:String>Blue Monkey</x:String>
-                                <x:String>Squirrel Monkey</x:String>
-                                <x:String>Golden Lion Tamarin</x:String>
-                                <x:String>Howler Monkey</x:String>
-                                <x:String>Japanese Macaque</x:String>
+                                <x:String>Macho</x:String>
+                                <x:String>Femea</x:String>
                             </Picker.Items>
                         </Picker>
                     </ViewCell>

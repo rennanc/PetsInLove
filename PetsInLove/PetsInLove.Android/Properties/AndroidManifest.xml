@@ -1,5 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android" android:installLocation="auto" android:versionName="2" package="petsinlove.droid" android:versionCode="2">
-	<uses-sdk android:minSdkVersion="15" />
-	<application android:label="PetsInLove" android:icon="@drawable/icon"></application>
+	<uses-sdk android:minSdkVersion="15" android:targetSdkVersion="27" />
+	<uses-permission android:name="android.permission.INTERNET" />
+	<uses-permission android:name="android.permission.INTERNAL_SYSTEM_WINDOW" />
+  <application android:label="PetsInLove" android:icon="@drawable/icon" >
+    <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity"
+          android:launchMode="singleTop" android:noHistory="true">
+      <intent-filter>
+        <action android:name="android.intent.action.VIEW" />
+        <category android:name="android.intent.category.DEFAULT" />
+        <category android:name="android.intent.category.BROWSABLE" />
+        <data android:scheme="petsinlove" android:host="easyauth.callback" />
+      </intent-filter>
+    </activity>
+  </application>
 </manifest>
