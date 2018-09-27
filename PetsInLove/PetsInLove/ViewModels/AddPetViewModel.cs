@@ -14,13 +14,14 @@ namespace PetsInLove.ViewModels
     {
 
         private readonly IPetsInLoveApiService _petsInLoveApiService;
-        Command RegisterCommand;
-        public Pet _pet;
+        public Command RegisterCommand { get; }
+        public Pet Pet { get; set; }
 
         public AddPetViewModel(IPetsInLoveApiService petsInLoveApiService)
         {
             _petsInLoveApiService = petsInLoveApiService;
-            RegisterCommand = new Command(ExecuteRegisterCommand);
+			this.Pet = new Pet();
+			RegisterCommand = new Command(ExecuteRegisterCommand);
         }
 
         public AddPetViewModel()
@@ -29,7 +30,7 @@ namespace PetsInLove.ViewModels
 
         private async void ExecuteRegisterCommand(object obj)
         {
-            throw new NotImplementedException();
+			await _petsInLoveApiService.InsertItemAsync(this.Pet);
         }
     }
 }

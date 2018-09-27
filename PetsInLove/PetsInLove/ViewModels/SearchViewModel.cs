@@ -28,7 +28,8 @@ namespace PetsInLove.ViewModels
 
         public SearchViewModel()
         {
-        }
+			SearchCommand = new Command(ExecuteSearchCommand);
+		}
 
         private async void ExecuteSearchCommand()
         {

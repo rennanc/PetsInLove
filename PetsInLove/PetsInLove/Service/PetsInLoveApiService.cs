@@ -60,7 +60,7 @@ namespace PetsInLove.Services
 
         public async Task InsertItemAsync(Pet pet)
         {
-            await Table.InsertAsync(pet).ConfigureAwait(false);
+			await Table.InsertAsync(pet);//.ConfigureAwait(false);
         }
 
         public async Task DeleteItemAsync(Pet pet)
