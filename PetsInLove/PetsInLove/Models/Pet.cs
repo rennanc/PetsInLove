@@ -54,6 +54,11 @@ namespace PetsInLove.Models
         void OnPropertyChanged([CallerMemberName]string propertyName = "") =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
 
-        // public Owner Owner { get; set; }
+		// public Owner Owner { get; set; }
+
+		public Pet()
+		{
+			this.AzureVersion = "AAAAAAAAB90=";
+		}
     }
 }

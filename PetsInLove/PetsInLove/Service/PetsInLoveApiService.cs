@@ -22,7 +22,7 @@ namespace PetsInLove.Services
         IMobileServiceClient _client;
         IMobileServiceTable<Pet> Table;
 
-        private const string BaseUrl = "http://petsinlove.azurewebsites.net/Tables/";
+        private const string BaseUrl = "https://petsinlove.azurewebsites.net/Tables/";
 
         public async Task<List<Pet>> GetTagsAsync()
         {
@@ -48,9 +48,9 @@ namespace PetsInLove.Services
 
         public PetsInLoveApiService()
         {
-            //string MyAppServiceURL = "http://petsinlove.azurewebsites.net/";
-            //_client = new MobileServiceClient(MyAppServiceURL);
-            //Table = _client.GetTable<Pet>();
+            string MyAppServiceURL = "https://petsinlove.azurewebsites.net/";
+            _client = new MobileServiceClient(MyAppServiceURL);
+            Table = _client.GetTable<Pet>();
         }
 
         public async Task<List<Pet>> GetTable()
@@ -60,7 +60,18 @@ namespace PetsInLove.Services
 
         public async Task InsertItemAsync(Pet pet)
         {
-			await Table.InsertAsync(pet);//.ConfigureAwait(false);
+			string MyAppServiceURL = "https://petsinlove.azurewebsites.net/";
+			_client = new MobileServiceClient(MyAppServiceURL);
+			Table = _client.GetTable<Pet>();
+			try
+			{
+				await Table.InsertAsync(new Pet()).ConfigureAwait(false);
+			}
+			catch (Exception e)
+			{
+				string teste = e.Message;
+			}
+			
         }
 
         public async Task DeleteItemAsync(Pet pet)
