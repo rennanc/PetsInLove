@@ -34,6 +34,17 @@ namespace PetsInLove.ViewModels
 
         public Picker pickerGenre { get; set; }
 
+        private bool _isRefreshing = false;
+        public bool IsRefreshing
+        {
+            get { return _isRefreshing; }
+            set
+            {
+                _isRefreshing = value;
+                OnPropertyChanged(nameof(IsRefreshing));
+            }
+        }
+
         public MainViewModel(IPetsInLoveApiService petsInLoveApiService)
         {
             _petsInLoveApiService = petsInLoveApiService;
@@ -80,6 +91,7 @@ namespace PetsInLove.ViewModels
         public override async Task LoadAsync()
         {
             var pets = await _petsInLoveApiService.GetTagsAsync();
+            IsRefreshing = true;
 
             //System.Diagnostics.Debug.WriteLine("FOUND {0} PETS", pets.Count);
             Pets.Clear();
@@ -89,6 +101,8 @@ namespace PetsInLove.ViewModels
             }
 
             OnPropertyChanged(nameof(Pets));
+            IsRefreshing = false;
+
         }
 
         private async void ExecutePetDetailsCommand(Pet pet)

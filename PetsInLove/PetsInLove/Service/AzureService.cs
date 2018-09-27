@@ -42,14 +42,14 @@ namespace PetsInLove.Service
             }
         }
 
-        public async Task<bool> LoginAsync()
+        public async Task<bool> LoginAsync(MobileServiceAuthenticationProvider mobileServiceAuthenticationProvider)
         {
             Initialize();
 
             var auth = DependencyService.Get<IAuthenticate>();
             IDictionary<string, string> parameters = new Dictionary<string, string>();
             parameters.Add( "uriScheme", uriScheme );
-            var user = await auth.LoginAsync(Client, MobileServiceAuthenticationProvider.Google, parameters);
+            var user = await auth.LoginAsync(Client, mobileServiceAuthenticationProvider, parameters);
 
             if(user == null)
             {

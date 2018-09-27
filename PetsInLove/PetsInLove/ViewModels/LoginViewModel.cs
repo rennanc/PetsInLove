@@ -1,4 +1,6 @@
-﻿using PetsInLove.Helpers;
+﻿using Microsoft.WindowsAzure.MobileServices;
+using PetsInLove.Helpers;
+using PetsInLove.Models.Enums;
 using PetsInLove.Service;
 using PetsInLove.ViewModels;
 using System;
@@ -17,10 +19,14 @@ namespace PetsInLove.ViewModels
         INavigation navigation;
 
         ICommand loginCommand;
+        ICommand loginGoogleCommand;
 
         public ICommand LoginCommand =>
-            loginCommand ?? (loginCommand = new Command(async () => await ExecuteLoginCommandAsync()));
-        
+            loginCommand ?? (loginCommand = new Command(async () => await ExecuteLoginCommandAsync(MobileServiceAuthenticationProvider.Facebook)));
+
+        public ICommand LoginGoogleCommand =>
+            loginGoogleCommand ?? (loginGoogleCommand = new Command(async () => await ExecuteLoginCommandAsync(MobileServiceAuthenticationProvider.Google)));
+
         public LoginViewModel(INavigation nav)
         {
             azureService = DependencyService.Get<AzureService>();
@@ -28,9 +34,9 @@ namespace PetsInLove.ViewModels
             Title = "Pets In Love - Login";
         }
 
-        private async Task ExecuteLoginCommandAsync()
+        private async Task ExecuteLoginCommandAsync(MobileServiceAuthenticationProvider mobileServiceAuthenticationProvider)
         {
-            if(!(await LoginAsync()))
+            if(!(await LoginAsync(mobileServiceAuthenticationProvider)))
             {
                 return;
             }
@@ -41,13 +47,13 @@ namespace PetsInLove.ViewModels
 
         }
 
-        public Task<bool> LoginAsync()
+        public Task<bool> LoginAsync(MobileServiceAuthenticationProvider mobileServiceAuthenticationProvider)
         {
             if (Settings.isLoggedIn)
             {
                 return Task.FromResult(true);
             }
-            return azureService.LoginAsync();
+            return azureService.LoginAsync(mobileServiceAuthenticationProvider);
         }
     }
 }

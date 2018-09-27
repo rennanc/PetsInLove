@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "214699609733",
+    "firebase_url": "https://petsinlove-ef484.firebaseio.com",
+    "project_id": "petsinlove-ef484",
+    "storage_bucket": "petsinlove-ef484.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:214699609733:android:05d9911a540b93f1",
+        "android_client_info": {
+          "package_name": "petsinlove.droid"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "214699609733-4vcaviqa3ag7lmjjcnmocru87u4826rh.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBSqU9LAIy4IU-ID7pN_Qm-FR4o4VaZ56M"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

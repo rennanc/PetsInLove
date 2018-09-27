@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Xamarin.Essentials;
 using Xamarin.Forms;
 
 namespace PetsInLove.ViewModels
@@ -32,12 +33,19 @@ namespace PetsInLove.ViewModels
 
         private async void ExecuteEmailCommand(object obj)
         {
-            Device.OpenUri(new Uri("mailto:" + this.Pet.Email));
+            var message = new EmailMessage
+            {
+                Subject = "[PetsInLove]",
+                Body = "Olá, vi seu anuncio na PetsInLove",
+                To = new List<string> { this.Pet.Email },
+            };
+            await Email.ComposeAsync(message);
+
         }
 
         private async void ExecuteCallCommand(object obj)
         {
-            Device.OpenUri(new Uri("tel:" + this.Pet.Phone));
+            PhoneDialer.Open(this.Pet.Phone);
         }
     }
 }

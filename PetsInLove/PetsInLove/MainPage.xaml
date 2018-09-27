@@ -3,10 +3,10 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="PetsInLove.MainPage"
              xmlns:pages="clr-namespace:PetsInLove;assembly=PetsInLove"
-             Title="teste">
+             Title="Pets">
 
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="About" Command="{Binding AboutCommand}"/>
+        <ToolbarItem Text="Sobre" Command="{Binding AboutCommand}"/>
         <ToolbarItem Text="Buscar" Command="{Binding SearchCommand}"/>
     </ContentPage.ToolbarItems>
 
@@ -18,35 +18,37 @@
                  BackgroundColor="White"
                  x:Name="layoutMain"
                  >
-        <Button Text="Filtros" 
-                Clicked="ExecuteOpenFilterCommand"
-                        ></Button>
+        <StackLayout Orientation="Vertical" >
+            <Button Text="Filtros" 
+                    Clicked="ExecuteOpenFilterCommand"
+                            ></Button>
             <Entry Placeholder="Raça"
-                       IsVisible="False"
-                       x:Name="txtBreed"
-                       ></Entry>
+                           IsVisible="False"
+                           x:Name="txtBreed"
+                           ></Entry>
             <Picker x:Name="pickerSpecies" 
-                    Grid.Row="0" 
-                    HorizontalOptions="FillAndExpand" 
-                    IsVisible="False"
-                    BindingContext="{Binding pickerSpecies}"
-                    >
+                        Grid.Row="0" 
+                        HorizontalOptions="FillAndExpand" 
+                        IsVisible="False"
+                        BindingContext="{Binding pickerSpecies}"
+                        >
             </Picker>
-        <Picker x:Name="pickerGenre" 
-                    Grid.Row="0" 
-                    HorizontalOptions="FillAndExpand"
-                IsVisible="False"
-                BindingContext="{Binding pickerGenre}"
-                    >
-        </Picker>
-
+            <Picker x:Name="pickerGenre" 
+                        Grid.Row="0" 
+                        HorizontalOptions="FillAndExpand"
+                    IsVisible="False"
+                    BindingContext="{Binding pickerGenre}"
+                        >
+            </Picker>
+        </StackLayout>
         <!--Lista -->
             <ListView 
             HasUnevenRows="True"
             ItemsSource="{Binding Pets}" 
             ItemSelected="ListView_OnItemSelected"
             RefreshCommand="{Binding RefreshCommand}"
-            IsPullToRefreshEnabled="True" Margin="0,30,0,0"
+            IsRefreshing="{Binding IsRefreshing}"
+            IsPullToRefreshEnabled="True"
             >   
                 <ListView.ItemTemplate>
                     <DataTemplate>
@@ -59,21 +61,23 @@
                             <Image Source="{Binding Photo}" Aspect="AspectFill" Grid.RowSpan="2" />
                             <Image Source="ShadowOverlay" Grid.RowSpan="2"  Aspect="Fill" VerticalOptions="End" HorizontalOptions="Fill" />
 
-                            <Grid Margin="10" RowSpacing="10" ColumnSpacing="10" Grid.Row="1">
+                            <Grid Margin="10" RowSpacing="0" ColumnSpacing="1" Grid.Row="1">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="AUTO"/>
                                     <RowDefinition Height="25"/>
                                 </Grid.RowDefinitions>
                                 <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="25"/>
                                     <ColumnDefinition Width="*"/>
-                                    <ColumnDefinition Width="AUTO"/>
+                                    <ColumnDefinition Width="100"/>
+                                    <ColumnDefinition Width="50"/>
                                 </Grid.ColumnDefinitions>
 
-                                <Label Text="{Binding Name}" FontSize="20" TextColor="#000000" FontAttributes="Bold" BackgroundColor="#ffffff" Opacity="0.7"  Grid.Row="0" Grid.ColumnSpan="3"  LineBreakMode="NoWrap"/>
-                                <StackLayout  Grid.Row="1" Grid.Column="0" BackgroundColor="#ffffff" Opacity="0.7" Grid.ColumnSpan="3" >
+                                <Label Text="{Binding Name}" FontSize="20" TextColor="#000000" FontAttributes="Bold" BackgroundColor="#ffffff" Opacity="0.7"  Grid.Row="0" Grid.ColumnSpan="3" XAlign="Center" LineBreakMode="NoWrap"/>
+                                <StackLayout Grid.Row="1" Grid.Column="0" BackgroundColor="#ffffff" Opacity="0.9" Grid.ColumnSpan="2" Orientation="Horizontal">
+                                    <Label Text="Raça" TextColor="#000000"   />
                                     <Label Text="{Binding Breed}" TextColor="#000000"   />
                                 </StackLayout>
+                                <Label Text="{Binding Genre}" TextColor="#000000"  Grid.Row="1" Grid.Column="2" BackgroundColor="#ffffff" XAlign="Center" Opacity="0.9" Grid.ColumnSpan="1" />
 
                             </Grid>
 

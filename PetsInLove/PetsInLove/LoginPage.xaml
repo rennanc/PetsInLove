@@ -7,8 +7,8 @@
 
     <StackLayout HorizontalOptions="Center"
                    VerticalOptions="CenterAndExpand" >
-        <Label Text="Pets In Love" TextColor="White" FontSize="Large"/>
-        <Image Source="Logo.png"  />
+        <Image Source="Logo.png" HeightRequest="300" ></Image>
         <Button Command="{Binding LoginCommand}" Text="Entrar com o Facebook" BackgroundColor="#3b5998" FontSize="Medium" TextColor="White" ></Button>
+        <Button Command="{Binding LoginGoogleCommand}" Text="Entrar com o Google" BackgroundColor="#d34836" FontSize="Medium" TextColor="White" ></Button>
     </StackLayout>
 </ContentPage>

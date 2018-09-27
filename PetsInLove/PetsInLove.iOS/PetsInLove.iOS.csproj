@@ -159,6 +159,9 @@
     <Reference Include="Validation, Version=2.4.0.0, Culture=neutral, PublicKeyToken=2fc06f0d701809a7, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Validation.2.4.18\lib\netstandard1.3\Validation.dll</HintPath>
     </Reference>
+    <Reference Include="Xamarin.Essentials, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Xamarin.Essentials.0.10.0-preview\lib\xamarinios10\Xamarin.Essentials.dll</HintPath>
+    </Reference>
     <Reference Include="Xamarin.Forms.Core, Version=2.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\..\packages\Xamarin.Forms.3.2.0.839982\lib\Xamarin.iOS10\Xamarin.Forms.Core.dll</HintPath>
     </Reference>
