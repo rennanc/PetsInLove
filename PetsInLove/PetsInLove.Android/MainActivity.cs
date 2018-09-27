@@ -46,6 +46,8 @@ namespace PetsInLove.Droid
 
             Microsoft.WindowsAzure.MobileServices.CurrentPlatform.Init();
 
+            FAB.Droid.FloatingActionButtonRenderer.InitControl();
+            //add action button control
             LoadApplication(new App());
 
             /*try

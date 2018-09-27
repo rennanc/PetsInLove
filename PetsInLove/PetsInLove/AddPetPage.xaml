@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+              xmlns:pages="clr-namespace:PetsInLove;assembly=PetsInLove"
+             x:Class="PetsInLove.AddPetPage">
+    <ContentPage.Content>
+        <StackLayout>
+
+            <Grid Margin="10" RowSpacing="0" ColumnSpacing="1" Grid.Row="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="AUTO"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                    <RowDefinition Height="40"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="100"/>
+                    <ColumnDefinition Width="*"/>
+                </Grid.ColumnDefinitions>
+
+
+                <Label Text="Nome" Grid.Column="0" Grid.Row="0" FontSize="Medium"/>
+                <Entry Text="{Binding Pet.Name}" Grid.Column="1" Grid.Row="0" />
+
+                <Label Text="Genero" Grid.Column="0" Grid.Row="1" FontSize="Medium"/>
+                <Entry Text="{Binding Pet.Genre}" Grid.Column="1" Grid.Row="1" />
+
+                <Label Text="Raça" Grid.Column="0" Grid.Row="2" FontSize="Medium" />
+                <Entry Text="{Binding Pet.Breed}" Grid.Column="1" Grid.Row="2" />
+
+                <Label Text="Foto" Grid.Column="0" Grid.Row="3" FontSize="Medium"/>
+                <Entry Text="{Binding Pet.Photo}" Grid.Column="1" Grid.Row="3" />
+
+                <Button Command="{Binding RegisterCommand}" Text="Publicar"  Grid.Column="1" Grid.Row="4"></Button>
+                
+            </Grid>
+
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

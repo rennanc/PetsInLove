@@ -36,7 +36,7 @@ namespace PetsInLove.ViewModels
             var message = new EmailMessage
             {
                 Subject = "[PetsInLove]",
-                Body = "Olá, vi seu anuncio na PetsInLove",
+                Body = "Olá, eu vi seu anuncio na PetsInLove",
                 To = new List<string> { this.Pet.Email },
             };
             await Email.ComposeAsync(message);

@@ -22,6 +22,8 @@ namespace PetsInLove.ViewModels
 
         public Command SearchCommand { get; }
 
+        public Command AddCommand { get; }
+
         public Command<Pet> PetDetailsCommand { get; }
 
         public Command RefreshCommand { get; }
@@ -53,6 +55,7 @@ namespace PetsInLove.ViewModels
             RefreshCommand = new Command(() => LoadPets(null)); // Sempre atualizar
             AboutCommand = new Command(ExecuteAboutCommand);
             SearchCommand = new Command(ExecuteSearchCommand);
+            AddCommand = new Command(ExecuteAddCommand);
             PetDetailsCommand = new Command<Pet>(ExecutePetDetailsCommand);
 
             LoadPets(null);
@@ -63,6 +66,11 @@ namespace PetsInLove.ViewModels
         private void ExecuteAboutCommand(object obj)
         {
             throw new NotImplementedException();
+        }
+
+        private async void ExecuteAddCommand(object obj)
+        {
+            await PushAsync<AddPetViewModel>();
         }
 
         private async void ExecuteSearchCommand(object obj)
@@ -90,8 +98,8 @@ namespace PetsInLove.ViewModels
 
         public override async Task LoadAsync()
         {
-            var pets = await _petsInLoveApiService.GetTagsAsync();
             IsRefreshing = true;
+            var pets = await _petsInLoveApiService.GetTagsAsync();
 
             //System.Diagnostics.Debug.WriteLine("FOUND {0} PETS", pets.Count);
             Pets.Clear();
