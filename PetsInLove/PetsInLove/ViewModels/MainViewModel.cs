@@ -63,9 +63,9 @@ namespace PetsInLove.ViewModels
             Title = "Pets In Love";
         }
 
-        private void ExecuteAboutCommand(object obj)
+        private async void ExecuteAboutCommand(object obj)
         {
-            throw new NotImplementedException();
+            await PushAsync<AboutViewModel>();
         }
 
         private async void ExecuteAddCommand(object obj)
