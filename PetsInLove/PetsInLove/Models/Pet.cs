@@ -22,7 +22,7 @@ namespace PetsInLove.Models
         [JsonProperty("Name")]
         public string Name { get; set; }
         [JsonProperty("Genre")]
-        public Genre Genre { get; set; }
+        public int Genre { get; set; }
         //public Species Species { get; set; }
         [JsonProperty("Breed")]
         public string Breed { get; set; }

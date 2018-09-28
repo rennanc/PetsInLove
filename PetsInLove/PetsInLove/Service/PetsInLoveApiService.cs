@@ -65,7 +65,7 @@ namespace PetsInLove.Services
 			Table = _client.GetTable<Pet>();
 			try
 			{
-				await Table.InsertAsync(new Pet()).ConfigureAwait(false);
+				await Table.InsertAsync(pet).ConfigureAwait(false);
 			}
 			catch (Exception e)
 			{

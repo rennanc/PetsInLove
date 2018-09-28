@@ -4,6 +4,7 @@
               xmlns:pages="clr-namespace:PetsInLove;assembly=PetsInLove"
              x:Class="PetsInLove.AddPetPage">
     <ContentPage.Content>
+		<ScrollView>
         <StackLayout>
 
             <Grid Margin="10" RowSpacing="0" ColumnSpacing="1" Grid.Row="1">
@@ -14,6 +15,11 @@
                     <RowDefinition Height="40"/>
                     <RowDefinition Height="40"/>
                     <RowDefinition Height="40"/>
+					<RowDefinition Height="40"/>
+					<RowDefinition Height="40"/>
+					<RowDefinition Height="40"/>
+					<RowDefinition Height="40"/>
+					<RowDefinition Height="40"/>
                 </Grid.RowDefinitions>
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="100"/>
@@ -30,13 +36,32 @@
                 <Label Text="Raça" Grid.Column="0" Grid.Row="2" FontSize="Medium" />
                 <Entry Text="{Binding Pet.Breed}" Grid.Column="1" Grid.Row="2" />
 
-                <Label Text="Foto" Grid.Column="0" Grid.Row="3" FontSize="Medium"/>
-                <Entry Text="{Binding Pet.Photo}" Grid.Column="1" Grid.Row="3" />
+				<Label Text="Detalhes" Grid.Column="0" Grid.Row="3" FontSize="Medium" />
+				<Entry Text="{Binding Pet.Detail}" Grid.Column="1" Grid.Row="3" />
 
-                <Button Command="{Binding RegisterCommand}" Text="Publicar"  Grid.Column="1" Grid.Row="4"></Button>
+				<Label Text="Cidade" Grid.Column="0" Grid.Row="4" FontSize="Medium" />
+				<Entry Text="{Binding Pet.City}" Grid.Column="1" Grid.Row="4" />
+
+				<Label Text="País" Grid.Column="0" Grid.Row="5" FontSize="Medium" />
+				<Entry Text="{Binding Pet.Country}" Grid.Column="1" Grid.Row="5" />
+
+				<Label Text="Nome do Dono" Grid.Column="0" Grid.Row="6" FontSize="Medium" />
+				<Entry Text="{Binding Pet.OwnerName}" Grid.Column="1" Grid.Row="6" />
+
+				<Label Text="Email" Grid.Column="0" Grid.Row="7" FontSize="Medium" />
+				<Entry Text="{Binding Pet.Email}" Grid.Column="1" Grid.Row="7" />
+				
+				<Label Text="Email" Grid.Column="0" Grid.Row="8" FontSize="Medium" />
+				<Entry Text="{Binding Pet.Phone}" Grid.Column="1" Grid.Row="8" />
+
+				<Label Text="Url da Imagem" Grid.Column="0" Grid.Row="9" FontSize="Medium"/>
+                <Entry Text="{Binding Pet.Photo}" Grid.Column="1" Grid.Row="9" />
+
+                <Button Command="{Binding RegisterCommand}" Text="Publicar"  Grid.Column="1" Grid.Row="10"></Button>
                 
             </Grid>
 
         </StackLayout>
-    </ContentPage.Content>
+		</ScrollView>
+	</ContentPage.Content>
 </ContentPage>
