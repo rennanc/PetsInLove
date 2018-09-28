@@ -16,6 +16,7 @@ namespace PetsInLove.ViewModels
 
         public Command CallCommand { get; }
         public Command EmailCommand { get; }
+        public Command OpenMapCommand { get; }
 
         public Pet Pet { get; set; }
 
@@ -24,6 +25,7 @@ namespace PetsInLove.ViewModels
             this.Pet = Pet;
             CallCommand = new Command(ExecuteCallCommand);
             EmailCommand = new Command(ExecuteEmailCommand);
+            OpenMapCommand = new Command(ExecuteOpenMapCommand);
         }
 
         public PetDetailsViewModel()
@@ -46,6 +48,20 @@ namespace PetsInLove.ViewModels
         private async void ExecuteCallCommand(object obj)
         {
             PhoneDialer.Open(this.Pet.Phone);
+        }
+
+        private async void ExecuteOpenMapCommand(object obj)
+        {
+            var placemark = new Placemark
+            {
+                CountryName = this.Pet.Country,
+                AdminArea = this.Pet.City,
+                Thoroughfare = "PetShop",
+                Locality = this.Pet.City
+            };
+            var options = new MapsLaunchOptions { Name = this.Pet.Name };
+
+            await Maps.OpenAsync(placemark, options);
         }
     }
 }

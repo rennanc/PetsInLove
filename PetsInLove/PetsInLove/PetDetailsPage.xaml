@@ -24,6 +24,8 @@
                 <FlexLayout Direction="Row">
                     <Button Command="{Binding EmailCommand}" Text="Enviar Email" BackgroundColor="#3b5998" FontSize="Medium" TextColor="White" BorderRadius="20" FlexLayout.Grow="1" />
                     <Button Command="{Binding CallCommand}" Text="Ligar" BackgroundColor="#3b5998" FontSize="Medium" TextColor="White" BorderRadius="20" FlexLayout.Grow="1" />
+                    <Button Command="{Binding OpenMapCommand}" Text="Localizar" BackgroundColor="#3b5998" FontSize="Medium" TextColor="White" BorderRadius="20" FlexLayout.Grow="1" />
+                    
                 </FlexLayout>
                 
                 <Label Text="{Binding Pet.Detail}" FontSize="Large"  />
